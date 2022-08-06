@@ -8,7 +8,6 @@ class YouToU:
     dstV = "./output/video/"
 
     currentTitle = ""
-    currentLink = ""
 
     def checkDirectories():
         if not os.path.exists("./output/"):
@@ -99,7 +98,6 @@ class YouToU:
         title = yt.title
 
         YouToU.currentTitle = title
-        YouToU.currentLink = link
 
         print(title)
 
