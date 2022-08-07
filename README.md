@@ -12,8 +12,8 @@ Installation
 Usage
 =====
  All commands entered are expected to entered in either of the two formats.
- __`[-link or -l] ['link'] [type flag]`__
- __`[-file or -f] ['path']`__
+ * __`[-link or -l] ['link'] [type flag]`__
+ * __`[-file or -f] ['path']`__
   
 Type Flags
 =====
