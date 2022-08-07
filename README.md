@@ -1,12 +1,15 @@
 # YouToU
   project yada yada
   
-#Installation
+Installation
+============
   1
   2
   
-#Usage
+Usage
+=====
   how to use
   
-#Flags
+Flags
+=====
  examples
