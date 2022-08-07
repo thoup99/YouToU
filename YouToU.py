@@ -1,5 +1,5 @@
 from pytube import YouTube
-from moviepy.editor import *
+import subprocess
 import os
 from sys import argv
 
@@ -50,7 +50,7 @@ class YouToU:
             return
 
 
-        print("\tFixing File")
+        print("\tFixing Audio")
 
         try:
             with open("./output/audio/" + YouToU.currentTitle + ".mp3", "w"):
@@ -61,15 +61,26 @@ class YouToU:
 
             os.remove(mp3)
 
-            video = AudioFileClip(mp4)
-            video.write_audiofile(mp3, verbose=False, logger= None)
+            subprocess.call([
+                'ffmpeg',
+                '-i',
+                mp4,
+                '-c:v',
+                'copy',
+                '-c:a',
+                'libmp3lame',
+                '-q:a',
+                '4', 
+                mp3,
+                '-loglevel', 'quiet'
+            ])
 
             os.remove(mp4)
 
-            print("\t\tFile Fixed")
+            print("\t\tAudio Fixed!")
 
         except:
-            print("\t\tError Fixing File. Remnence of the Process may still be found in the output folder.")
+            print("\t\tError Fixing Audio")
 
     def downloadBoth(yt):
         YouToU.downloadVideo(yt)
