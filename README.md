@@ -3,7 +3,7 @@
   
 Installation
 ============
-To start you will need to install the latest release of YouToU. From there place the exe wherever you wish to save it on your computer. Make sure to copy the path to the folder you placed the exe in as you will need to add it to your path. To add the folder to the path follow these steps.  
+To start you will need to downlaod the YouToU.exe from the latest release. From there place the exe wherever you wish to save it on your computer. Make sure to copy the path to the folder you placed the exe in as you will need to add it to your path. To add the folder to the path follow these steps.  
 
 __`Open Control Panel`__ --> __`System and Security`__ --> __`System`__ --> __`Advanced System Settings`__ --> __`Environment Variables`__  
 
