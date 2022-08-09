@@ -28,7 +28,7 @@ The second option will use the -video typeflag without it needing to be specifie
 File
 ====
 
-Files must be entered in this exact format
+Files must be entered in this exact format  
 __`["-f" or "file"] [path (including extension)]`__  
 The file being read from should preferably be a text file. The file should be formated in the following way with no blank lines between links.  
 __`[link] [typeflag]`__  
@@ -43,7 +43,7 @@ https://www.youtube.com/watch?v=owBhCgqGrS0 -b
 Output
 ======
 
-Output changes where your files will be saved to. There are two options for usage.
+Output changes where your files will be saved to. There are two options for usage.  
 __`["-o" or "-output"] [full path]__` Sets the output to the folder given as the path.  
 __`["-o" or "-output"]__` Sets the output path to the current working directory (cwd) of the command prompt
 
