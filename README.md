@@ -71,8 +71,8 @@ Type Flags
 Help
 ====
 Commands that can be entered to get help.  
-`-h link`   
-`-h video`    
-`-h output`  
-`-h typeflag`    
-`-h`  
+-h `link`   
+-h `video`    
+-h `output`  
+-h `typeflag`    
+-h  
