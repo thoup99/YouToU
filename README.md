@@ -55,8 +55,8 @@ Output
 ======
 
 Output changes where your files will be saved to. There are two options for usage.  
-__`["-o" or "-output"] [full path]__` Sets the output to the folder given as the path.  
-__`["-o" or "-output"]__` Sets the output path to the current working directory (cwd) of the command prompt
+__`["-o" or "-output"] [full path]`__ Sets the output to the folder given as the path.  
+__`["-o" or "-output"]`__ Sets the output path to the current working directory (cwd) of the command prompt
 
 
 Type Flags
