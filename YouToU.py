@@ -206,7 +206,6 @@ def printHelpOption(helpType):
             + '-h output   \n'
             + '-h typeflag \n'
             + '-h          \n'
-            + '-h misc     '
         )
 
     if helpType == 'misc':
@@ -224,67 +223,73 @@ if __name__ == "__main__":
     YouToU.init()
 
     argsLength = len(args)
-    flag1 = args[0].lower()
 
-    if flag1 == '-l' or flag1 == '-link':
-        if argsLength == 3:
-            YouToU.checkDirectories()
-            YouToU.downloadWithLink(args[1], args[2].lower())
-            print("Completed")
+    if argsLength == 0:
+        printHelpOption('help')
 
-        elif argsLength == 2:
-            YouToU.checkDirectories()
-            YouToU.downloadWithLink(args[1], '-v')
-            print("Completed")
+    else:
 
-        else:
-            printHelpOption('link')
+        flag1 = args[0].lower()
 
+        if flag1 == '-l' or flag1 == '-link':
+            if argsLength == 3:
+                YouToU.checkDirectories()
+                YouToU.downloadWithLink(args[1], args[2].lower())
+                print("Completed")
 
-    elif flag1 == '-f' or flag1 == '-file':
-        if argsLength >= 2:
-            YouToU.checkDirectories()
-            YouToU.downloadFromFile(args[1])
+            elif argsLength == 2:
+                YouToU.checkDirectories()
+                YouToU.downloadWithLink(args[1], '-v')
+                print("Completed")
 
-        else:
-            printHelpOption('file')
-
-
-    elif flag1 == '-o' or flag1 == '-output':
-        if argsLength == 2:
-            YouToU.createConfig(args[1])
-
-        elif argsLength == 1:
-            YouToU.createConfig(os.getcwd())
-
-        else:
-            printHelpOption('output')
-
-
-    elif flag1 == '-h' or flag1 == '-help': #Can take second argument that will be used to find its help option
-        if argsLength == 1:
-            printHelpOption('help')
-
-        elif argsLength == 2:
-            arg = args[1].lower()              
-
-            if arg == 'l' or arg == 'link':
+            else:
                 printHelpOption('link')
 
-            elif arg == 'f' or arg == 'file':
+
+        elif flag1 == '-f' or flag1 == '-file':
+            if argsLength >= 2:
+                YouToU.checkDirectories()
+                YouToU.downloadFromFile(args[1])
+
+            else:
                 printHelpOption('file')
 
-            elif arg == 'o' or arg == 'output':
+
+        elif flag1 == '-o' or flag1 == '-output':
+            if argsLength == 2:
+                YouToU.createConfig(args[1])
+
+            elif argsLength == 1:
+                YouToU.createConfig(os.getcwd())
+
+            else:
                 printHelpOption('output')
 
-            elif arg == 't' or arg == 'typeflag':
-                printHelpOption('typeflag')
+
+        elif flag1 == '-h' or flag1 == '-help': #Can take second argument that will be used to find its help option
+            if argsLength == 1:
+                printHelpOption('help')
+
+            elif argsLength == 2:
+                arg = args[1].lower()              
+
+                if arg == 'l' or arg == 'link':
+                    printHelpOption('link')
+
+                elif arg == 'f' or arg == 'file':
+                    printHelpOption('file')
+
+                elif arg == 'o' or arg == 'output':
+                    printHelpOption('output')
+
+                elif arg == 't' or arg == 'typeflag':
+                    printHelpOption('typeflag')
+
+                else:
+                    printHelpOption('misc')
 
             else:
                 printHelpOption('misc')
 
         else:
             printHelpOption('misc')
-
-    else:
-        printHelpOption('misc')
