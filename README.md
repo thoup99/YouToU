@@ -1,5 +1,5 @@
 # YouToU
-  Read Me not Done
+  YouToU is a command line based program that allows the user to download youtube videos one at a time or in bulk. The videos can also be downloaded with just their audio. YouToU relies on some of the pytube3 python library to work. 
   
 Installation
 ============
