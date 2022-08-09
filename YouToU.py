@@ -22,7 +22,7 @@ class YouToU:
             savedPath = data["output"]
 
         except:
-            print("Error occured when loading output path. Saving to current working directory.\nYou can fix you output location by using the -o flag followed by the path to the folder you want to use.")
+            print("Error occured when loading output path. Saving to current working directory.\nYou can fix you output location by using the -o flag followed by the path to the folder you want to use. Most likely C:Users\\'profile'\\")
             savedPath = ".\\"
 
         YouToU.dstO = savedPath + "\\output\\"
@@ -76,7 +76,7 @@ class YouToU:
 
         try:
             video = yt.streams.get_audio_only()
-            video.download(YouToU.dstA)
+            video.download(YouToU.dstA, YouToU.currentTitle + ".mp4")
 
             print("\t\tSuccess!")
 
@@ -85,14 +85,14 @@ class YouToU:
             return
 
 
-        print("\tFixing Audio")
+        print("\tFixing Audio") #Issue fixing audio with a - or / in its name
 
         try:
-            with open(".\\output\\audio\\" + YouToU.currentTitle + ".mp3", "w"):
+            with open(YouToU.dstA + YouToU.currentTitle + ".mp3", "w"):
                 pass
 
-            mp4 = ".\\output\\audio\\" + YouToU.currentTitle + ".mp4"
-            mp3 = ".\\output\\audio\\" + YouToU.currentTitle + ".mp3"
+            mp4 = YouToU.dstA + YouToU.currentTitle + ".mp4"
+            mp3 = YouToU.dstA + YouToU.currentTitle + ".mp3"
 
             os.remove(mp3)
 
@@ -114,7 +114,8 @@ class YouToU:
 
             print("\t\tAudio Fixed!")
 
-        except:
+        except Exception as e:
+            print(e)
             print("\t\tError Fixing Audio")
 
     def downloadBoth(yt):
@@ -144,9 +145,10 @@ class YouToU:
         yt = YouTube(link)
         title = yt.title
 
-        YouToU.currentTitle = title
-
         print(title)
+
+        YouToU.currentTitle = title.replace('/', ' ')
+
 
         if (flag == "-a" or flag == "-audio"): ##Audio Only
             YouToU.downloadAudio(yt)
