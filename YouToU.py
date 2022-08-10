@@ -147,7 +147,8 @@ class YouToU:
 
         print(title)
 
-        YouToU.currentTitle = title.replace('/', ' ')
+        ##Replaces all characters that can not be in a file name
+        YouToU.currentTitle = title.replace('/', ' ').replace('\\', ' ').replace('*', ' ').replace('?', ' ').replace('"', ' ').replace('<', ' ').replace('>', ' ').replace('\\', ' |').replace(':', ' ')
 
 
         if (flag == "-a" or flag == "-audio"): ##Audio Only
