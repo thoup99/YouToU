@@ -1,4 +1,5 @@
 from pytube import YouTube
+from pytube import Playlist
 import subprocess
 from sys import argv
 import json
@@ -57,6 +58,15 @@ class YouToU:
         if not os.path.exists(YouToU.dstV):
             os.mkdir(YouToU.dstV)
             print("Creating Video Output Directory")
+
+
+    def downloadPlaylist(p_url, flag):
+        p = Playlist(p_url)
+
+        print(f'Downloading: {p.title}')
+        for url in p.video_urls:
+            YouToU.downloadWithLink(url, flag)
+
 
     def downloadVideo(yt: YouTube):
         print("\tDownloading Video")
@@ -174,7 +184,7 @@ def printHelpOption(helpType):
             + '\tThe second option will use the -video typeflag without it needing to be specified'
         )
 
-    if helpType == 'file':
+    elif helpType == 'file':
         print(
             'Files must be entered in this exact format\n'
             + '\t["-f" or "file"] [path (including extension)]\n'
@@ -183,14 +193,14 @@ def printHelpOption(helpType):
             + '\tThere should also be no blank lines.'
         )
 
-    if helpType == 'output':
+    elif helpType == 'output':
         print(
             'Output changes where your files will be outputed to. There are two options for usage.\n'
             + '\t["-o" or "-output"] [full path] \n'
             + '\t["-o" or "-output"] Sets the current working directory (cwd) of the command prompt to the output path'
         )
 
-    if helpType == 'typeflag':
+    elif helpType == 'typeflag':
         print(
             'Type Flags are used to tell YouToU how you want your video to be downloaded. There are currently three options.\n'
             + '\t"-a" or "-audio" -> Downloads only the audio of the video in mp4 format.\n'
@@ -199,17 +209,25 @@ def printHelpOption(helpType):
             + '\nThe Audio flags requires FFMPEG to be installed and added to path to properly fix the audio.'
         )
 
-    if helpType == 'help':
+    elif helpType == 'help':
         print(
             'Help\n'
             + '-h link     \n'
-            + '-h video    \n'
+            + '-h playlist \n'
             + '-h output   \n'
             + '-h typeflag \n'
             + '-h          \n'
         )
 
-    if helpType == 'misc':
+    elif helpType == 'playlist':
+        print(
+            'Playlist can be downloaded in full at their highest quality.\n'
+            + '\t["-p" or "playlist"] [playlist link] [typeflag]'
+            + '\t["-p" or "playlist"] [playlist link]'
+            + '\tThe second option will use the -video typeflag without it needing to be specified'
+        )
+
+    elif helpType == 'misc':
         print(
             'The entered command could not be properly identified. Try using the help flag (-h) by itself for help.\n'
             + '\tYouToU -h\n'
@@ -245,6 +263,20 @@ if __name__ == "__main__":
 
             else:
                 printHelpOption('link')
+
+        elif flag1 == '-p' or flag1 == '-playlist':
+            if argsLength == 3:
+                YouToU.checkDirectories()
+                YouToU.downloadPlaylist(args[1], args[2].lower())
+                print("Completed")
+            
+            elif argsLength == 2:
+                YouToU.checkDirectories()
+                YouToU.downloadPlaylist(args[1], '-v')
+                print("Completed")
+
+            else:
+                printHelpOption('playlist')
 
 
         elif flag1 == '-f' or flag1 == '-file':
